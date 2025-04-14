@@ -3,6 +3,12 @@
 newmat11
 ========
 
+> Note:
+>
+> All source and other newmat files will be moved into a ``newmat11/``
+> directory to keep the top-level directory cleaner. This organizational change
+> will be documented in later updates to this file.
+
 A C++ matrix library by Robert B. Davies.
 
 Supports different types of matrices including:
@@ -63,7 +69,7 @@ After having installed newmat11 one can use it from CMake with `find_package`_:
 
    find_package(newmat11 REQUIRED)
 
-Suppose we have the following program demonstrating matrix inversion:
+Suppose we have the following C++11 program demonstrating matrix inversion:
 
 .. code:: cpp
 
@@ -73,7 +79,7 @@ Suppose we have the following program demonstrating matrix inversion:
     * @brief C++ newmat11 matrix inverse example
     * @copyright MIT License
     *
-    * @file This is a rewritten version of nm_ex1.cpp to work with CMake installs.
+    * @file This is a C++11 version of nm_ex1.cpp that works with CMake installs.
     */
 
    #include <cstdlib>
