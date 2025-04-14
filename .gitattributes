@@ -2,5 +2,6 @@
 * text=auto
 # except for batch files which require CRLF
 *.bat text eol=crlf
-# don't add nm11.htm to Linguist language stats
+# don't add nm11.htm + style sheet to Linguist language stats
 nm11.htm -linguist-detectable
+rbd.css -linguist-detectable
