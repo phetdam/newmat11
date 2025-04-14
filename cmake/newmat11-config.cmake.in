@@ -1,6 +1,7 @@
 # @PROJECT_NAME@.cmake
 #
 # @PROJECT_NAME@ CMake config script
+#
 
 @PACKAGE_INIT@
 
