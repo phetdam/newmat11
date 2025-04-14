@@ -1,0 +1,4 @@
+# LF line terminators to follow Git standard
+* text=auto
+# except for batch files which require CRLF
+*.bat text eol=crlf
