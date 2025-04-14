@@ -88,6 +88,7 @@ endif()
 
 # compiler options
 if(MSVC)
+    add_compile_definitions(_CRT_SECURE_NO_WARNINGS)
     add_compile_options(/W4)
 elseif(NEWMAT11_GNU_COMPILER)
     add_compile_options(-Wall)
@@ -248,6 +249,10 @@ endfunction()
 # build examples
 # example: example program
 newmat11_add_example(example)
+# TODO: fix causes of C4302 and C4311
+if(MSVC)
+    target_compile_options(example PRIVATE /wd4302 /wd4311)
+endif()
 # garch: GARCH model fitting using maximum likelihood
 newmat11_add_example(garch LIBRARIES newmat_nl)
 # nm_ex1: matrix inversion
@@ -262,6 +267,10 @@ newmat11_add_example(nl_ex LIBRARIES newmat_nl)
 newmat11_add_example(sl_ex LIBRARIES newmat_solve)
 # test_exc: exception handling demo
 newmat11_add_example(test_exc)
+# TODO: fix causes of MSVC warnings
+if(MSVC)
+    target_compile_options(test_exc PRIVATE /wd4302 /wd4311 /wd4456)
+endif()
 
 # build test program
 if(NEWMAT11_BUILD_TESTS)
@@ -296,6 +305,10 @@ if(NEWMAT11_BUILD_TESTS)
     # for tmt.cpp GCC will emit -Wmisleading-indentation
     if(NEWMAT11_GNU_COMPILER)
         target_compile_options(tmt PRIVATE -Wno-misleading-indentation)
+    endif()
+    # TODO: fix causes of MSVC warnings
+    if(MSVC)
+        target_compile_options(tmt PRIVATE /wd4302 /wd4311 /wd4456)
     endif()
     add_test(NAME tmt COMMAND tmt)
 else()
