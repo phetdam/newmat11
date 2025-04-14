@@ -1,3 +1,6 @@
 # ignore build directories
 /build
 /build_windows*
+# ignore VS Code and Visual Studio config directories
+/.vs
+/.vscode
