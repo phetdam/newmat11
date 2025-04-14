@@ -1,5 +1,8 @@
 # @PROJECT_NAME@.cmake
 #
+# Author: Derek Huang
+# License: MIT License
+#
 # @PROJECT_NAME@ CMake config script
 #
 
