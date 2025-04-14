@@ -1,0 +1,8 @@
+# @PROJECT_NAME@.cmake
+#
+# @PROJECT_NAME@ CMake config script
+
+@PACKAGE_INIT@
+
+# include exported targets
+include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@-targets.cmake")

@@ -154,6 +154,55 @@ add_library(newmat_solve STATIC solution.cpp)
 add_library(${PROJECT_NAME}::newmat_solve ALIAS newmat_solve)
 target_link_libraries(newmat_solve PUBLIC newmat)
 
+# CMake script installation directory
+set(NEWMAT11_CMAKE_PREFIX lib/cmake/${PROJECT_NAME})
+
+# library target install rules
+install(TARGETS newmat newmat_nl newmat_solve EXPORT ${PROJECT_NAME}-targets)
+# install target export file
+install(
+    EXPORT ${PROJECT_NAME}-targets
+    DESTINATION ${NEWMAT11_CMAKE_PREFIX}
+    NAMESPACE ${PROJECT_NAME}::
+)
+# public header file install rule
+install(
+    FILES
+        controlw.h
+        include.h
+        myexcept.h
+        newmat.h
+        newmatap.h
+        newmatio.h
+        newmatnl.h
+        newmatrc.h
+        newmatrm.h
+        precisio.h
+        solution.h
+    # note: namespacing directory added to prevent conflicts
+    DESTINATION include/${PROJECT_NAME}
+)
+
+include(CMakePackageConfigHelpers)
+
+# configure CMake config + version config scripts
+configure_package_config_file(
+    cmake/${PROJECT_NAME}-config.cmake.in
+    ${CMAKE_BINARY_DIR}/${PROJECT_NAME}-config.cmake
+    INSTALL_DESTINATION ${NEWMAT11_CMAKE_PREFIX}
+)
+write_basic_package_version_file(
+    ${CMAKE_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake
+    COMPATIBILITY AnyNewerVersion
+)
+# install rule for the config scripts
+install(
+    FILES
+        ${CMAKE_BINARY_DIR}/${PROJECT_NAME}-config.cmake
+        ${CMAKE_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake
+    DESTINATION ${NEWMAT11_CMAKE_PREFIX}
+)
+
 ##
 # Helper function for registering a newmat example program.
 #
