@@ -5,6 +5,7 @@
 /// Control word class.
 /// Manipulate bits used for setting options.
 
+// [Derek Huang] do *not* include directly as this has no namespacing
 
 #ifndef CONTROL_WORD_LIB
 #define CONTROL_WORD_LIB 0
