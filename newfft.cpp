@@ -262,7 +262,8 @@ static void GR_1D_FS (int PTS, int N_SYM, int N_UN_SYM,
       {
          if (MRC.Swap())
          {
-            int P = MRC.Reverse(); int JJ = MRC.Counter(); Real T;
+            // [Derek Huang] use outer JJ and T instead of shadowing
+            int P = MRC.Reverse(); JJ = MRC.Counter();
             T=X[JJ]; X[JJ]=X[P]; X[P]=T; T=Y[JJ]; Y[JJ]=Y[P]; Y[P]=T;
          }
       }
