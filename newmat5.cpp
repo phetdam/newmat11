@@ -487,7 +487,9 @@ MatrixInput GetSubMatrix::operator<<(float f)
    }
    return MatrixInput(n, r+1);
 }
-MatrixInput::~MatrixInput()
+
+// [Derek Huang] C++11 dtors are implicitly noexcept unless marked
+MatrixInput::~MatrixInput() NEWMAT_NOEXCEPT(false)
 {
    REPORT
    Tracer et("MatrixInput");

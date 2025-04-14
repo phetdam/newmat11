@@ -34,6 +34,20 @@ namespace NEWMAT {
 #define BandLUMatrix BLUMatrix
 #endif
 
+// [Derek Huang] MSVC-compatible C++ compiler standard version
+#if defined(_MSVC_LANG)
+#define NEWMAT_CPLUSPLUS _MSVC_LANG
+#else
+#define NEWMAT_CPLUSPLUS __cplusplus
+#endif  // !defined(_MSVC_LANG)
+
+// [Derek Huang] pre-C++11 noexcept macro
+#if NEWMAT_CPLUSPLUS >= 201103L
+#define NEWMAT_NOEXCEPT noexcept
+#else
+#define NEWMAT_NOEXCEPT
+#endif  // NEWMAT_CPLUSPLUS < 201103L
+
 // ************************** general utilities ****************************/
 
 class GeneralMatrix;                            // defined later
@@ -188,7 +202,7 @@ public:
    bool is_diagonal() const { return (attribute & Diagonal) != 0; }
    bool is_symmetric() const { return (attribute & Symmetric) != 0; }
    bool CannotConvert() const { return (attribute & LUDeco) != 0; }
-                                               // used by operator== 
+                                               // used by operator==
    FREE_CHECK(MatrixType)
 };
 
@@ -198,7 +212,7 @@ public:
 ///Upper and lower bandwidths of a matrix.
 ///That is number of diagonals strictly above or below main diagonal,
 ///e.g. diagonal matrix has 0 upper and lower bandwiths.
-///-1 means the matrix may have the maximum bandwidth. 
+///-1 means the matrix may have the maximum bandwidth.
 class MatrixBandWidth
 {
 public:
@@ -1854,7 +1868,7 @@ class LinearEquationSolver : public BaseMatrix
 public:
    LinearEquationSolver(const BaseMatrix& bm);
    ~LinearEquationSolver() { delete gm; }
-   void cleanup() { delete gm; } 
+   void cleanup() { delete gm; }
    GeneralMatrix* Evaluate(MatrixType) { return gm; }
    // probably should have an error message if MatrixType != UnSp
    NEW_DELETE(LinearEquationSolver)
@@ -1873,7 +1887,8 @@ class MatrixInput
 public:
    MatrixInput(const MatrixInput& mi) : n(mi.n), r(mi.r) {}
    MatrixInput(int nx, Real* rx) : n(nx), r(rx) {}
-   ~MatrixInput();
+   // [Derek Huang] C++11 dtors are implicitly noexcept unless marked
+   ~MatrixInput() NEWMAT_NOEXCEPT(false);
    MatrixInput operator<<(double);
    MatrixInput operator<<(float);
    MatrixInput operator<<(int f);
@@ -1983,7 +1998,7 @@ public:
    OverflowException(const char* c);
 };
 
-/// Miscellaneous exception (details in character string). 
+/// Miscellaneous exception (details in character string).
 class ProgramException : public Logic_error
 {
 protected:
@@ -2105,7 +2120,7 @@ inline ReturnMatrix CrossProductRows(const Matrix& A, const Matrix& B)
    { return crossproduct_rows(A, B); }
 inline ReturnMatrix CrossProductColumns(const Matrix& A, const Matrix& B)
    { return crossproduct_columns(A, B); }
-   
+
 void newmat_block_copy(int n, Real* from, Real* to);
 
 // ********************* friend functions ******************************** //
