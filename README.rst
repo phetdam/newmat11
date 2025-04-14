@@ -30,7 +30,9 @@ of which a copy has been provided in the source tree for offline viewing.
 
 The CMake_ build and packaging support was contributed by Derek Huang to
 facilitate a standard build mechanism across POSIX-like and Windows platforms.
-All other files are from the newmat11.zip_ downloaded on April 13, 2025.
+All other files are from the `newmat11.zip`_ downloaded on April 13, 2025.
+Originally, the library only targeted C++98, so some modifications have been
+made by Derek Huang to enable compilation under C++11 or above.
 
 .. __: https://www.robertnz.net/nm_intro.htm
 .. __: https://www.robertnz.net/nm11.htm
