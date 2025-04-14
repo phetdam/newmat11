@@ -64,9 +64,10 @@ static void tred2(const SymmetricMatrix& A, DiagonalMatrix& D,
          for (j=0; j<i; j++)
          {
             f = *zij++; g = *ej - hh * f; *ej++ = g;
-            Real* zjk = z + j*n; Real* zik = z + i*n;
+            // [Derek Huang] refer to outer zik instead of shadowing
+            Real* zjk = z + j*n; zik = z + i*n;
             Real* ek = E.Store(); k = j+1;
-            while (k--)  *zjk++ -= ( f*(*ek++) + g*(*zik++) ); 
+            while (k--)  *zjk++ -= ( f*(*ek++) + g*(*zik++) );
          }
       }
       D.element(i) = h;
@@ -121,7 +122,8 @@ static void tql2(DiagonalMatrix& D, DiagonalMatrix& E, Matrix& Z)
          if (m==l) { REPORT test = true; break; }
          Real& dl1 = D.element(l+1);
          Real g = dl; Real p = (dl1-g) / (2.0*el); Real r = sqrt(p*p + 1.0);
-         dl = el / (p < 0.0 ? p-r : p+r); Real h = g - dl; f += h;
+         // [Derek Huang] refer to outer h instead of shadowing
+         dl = el / (p < 0.0 ? p-r : p+r); h = g - dl; f += h;
          Real* dlx = &dl1; i = n-l-1; while (i--) *dlx++ -= h;
 
          p = D.element(m); Real c = 1.0; Real s = 0.0;
@@ -204,12 +206,13 @@ static void tred3(const SymmetricMatrix& X, DiagonalMatrix& D,
          for (j = 0; j < i; j++)
          {
             Real* dk = D.Store(); Real* ak = A.Store()+(j*(j+1))/2;
-            Real g = 0.0; k = j;
+            // [Derek Huang] refer to outer g instead of shadowing
+            g = 0.0; k = j;
             while (k--)  g += *ak++ * *dk++;
-            k = i-j; int l = j; 
+            k = i-j; int l = j;
             if (k) for (;;) { g += *ak * *dk++; if (!(--k)) break; ak += ++l; }
             g /= h; *ej++ = g; f += g * *dj++;
-         }  
+         }
          Real hh = f / (2 * h); Real* ak = A.Store();
          dj = D.Store(); ej = E.Store();
          for (j = 0; j < i; j++)
@@ -245,7 +248,8 @@ static void tql1(DiagonalMatrix& D, DiagonalMatrix& E)
          if (m==l) { REPORT test = true; break; }
          Real& dl1 = D.element(l+1);
          Real g = dl; Real p = (dl1-g) / (2.0*el); Real r = sqrt(p*p + 1.0);
-         dl = el / (p < 0.0 ? p-r : p+r); Real h = g - dl; f += h;
+         // [Derek Huang] refer to outer h instead of shadowing
+         dl = el / (p < 0.0 ? p-r : p+r); h = g - dl; f += h;
          Real* dlx = &dl1; i = n-l-1; while (i--) *dlx++ -= h;
 
          p = D.element(m); Real c = 1.0; Real s = 0.0;
