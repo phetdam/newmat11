@@ -91,7 +91,7 @@ Suppose we have the following C++11 program demonstrating matrix inversion:
 
    namespace {
 
-   // float formatting helper
+   // float formatting object
    struct float_format {
      int width_;
      int precision_;
@@ -102,14 +102,16 @@ Suppose we have the following C++11 program demonstrating matrix inversion:
      return out << std::setw(ff.width_) << std::setprecision(ff.precision_);
    }
 
-   constexpr float_format fmt{15, 8};
+
 
    }  // namespace
 
    int main()
    {
-     // declare a matrix + load values by row
-     NEWMAT::Matrix X(4,4);
+     // stream formatter
+     constexpr float_format fmt{15, 8};
+     // create matrix row by row
+     NEWMAT::Matrix X(4, 4);
      X.row(1) <<  3.7 << -2.1 <<  7.4 << -1.0;
      X.row(2) <<  4.1 <<  0.0 <<  3.9 <<  4.0;
      X.row(3) << -2.5 <<  1.9 << -0.4 <<  7.3;
