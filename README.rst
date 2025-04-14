@@ -102,8 +102,6 @@ Suppose we have the following C++11 program demonstrating matrix inversion:
      return out << std::setw(ff.width_) << std::setprecision(ff.precision_);
    }
 
-
-
    }  // namespace
 
    int main()
