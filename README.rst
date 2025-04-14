@@ -91,16 +91,19 @@ Suppose we have the following C++11 program demonstrating matrix inversion:
 
    namespace {
 
-   // output formatting helper
-   struct float_format_type {};
+   // float formatting helper
+   struct float_format {
+     int width_;
+     int precision_;
+   };
 
    // operator<< to induce formatting changes
-   auto& operator<<(std::ostream& out, float_format_type)
+   auto& operator<<(std::ostream& out, const float_format& ff)
    {
-     return out << std::setw(15) << std::setprecision(8);
+     return out << std::setw(ff.width_) << std::setprecision(ff.precision_);
    }
 
-   constexpr float_format_type fmt;
+   constexpr float_format fmt{15, 8};
 
    }  // namespace
 
