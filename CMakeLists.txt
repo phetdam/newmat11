@@ -22,7 +22,7 @@ option(NEWMAT11_USE_NAMESPACE "Ensure all symbols are namespaced" ON)
 option(NEWMAT11_ENABLE_FREE_CHECK "Enable FREE_CHECK allocation tracking" OFF)
 option(NEWMAT11_ENABLE_C_SUBSCRIPTS "Enable C-style bracketed subscripting" OFF)
 option(NEWMAT11_BUILD_EXAMPLES "Build the newmat11 example programs" OFF)
-option(NEWMAT11_BUILD_TESTS "Buidl the newmat11 test program" OFF)
+option(NEWMAT11_BUILD_TESTS "Build the newmat11 test program" OFF)
 
 include(CTest)
 
