@@ -154,6 +154,14 @@ add_library(newmat_solve STATIC solution.cpp)
 add_library(${PROJECT_NAME}::newmat_solve ALIAS newmat_solve)
 target_link_libraries(newmat_solve PUBLIC newmat)
 
+# ensure all libraries have the 'd' debug suffix
+set_target_properties(
+    newmat
+    newmat_nl
+    newmat_solve PROPERTIES
+    DEBUG_POSTFIX d
+)
+
 # CMake script installation directory
 set(NEWMAT11_CMAKE_PREFIX lib/cmake/${PROJECT_NAME})
 
@@ -285,6 +293,10 @@ if(NEWMAT11_BUILD_TESTS)
         tmtm.cpp
     )
     target_link_libraries(tmt PRIVATE newmat)
+    # for tmt.cpp GCC will emit -Wmisleading-indentation
+    if(NEWMAT11_GNU_COMPILER)
+        target_compile_options(tmt PRIVATE -Wno-misleading-indentation)
+    endif()
     add_test(NAME tmt COMMAND tmt)
 else()
     message(STATUS "Skipping ${PROJECT_NAME} test target tmt")
