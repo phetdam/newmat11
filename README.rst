@@ -56,7 +56,7 @@ Since there are some differences between how CMake is traditionally invoked on
 POSIX-like systems vs. on Windows, we have two separate subsections with
 instructions on building, running tests, and installing newmat11 artifacts.
 
-POSIX
+\*nix
 ~~~~~
 
 To configure a release build, use the following command:
