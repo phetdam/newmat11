@@ -42,15 +42,44 @@ C++11 or above and to reduce compiler warnings.
 .. _CMake: https://cmake.org/cmake/help/latest/
 
 
-Building
---------
+Building + Installing
+---------------------
 
-To build, CMake 3.21 or above is required, as well as a C++98 compiler. By
+To build, CMake 3.20 or above is required, as well as a C++98 compiler. By
 default, CMake will build newmat11 with the "default" C++ standard supported by
 the compiler, but this can be changed via different CMake settings.
 
-TBD
+POSIX
+~~~~~
 
+For POSIX-like systems, use the following to configure a release build:
+
+.. code::
+
+   cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+Then, to build the newmat11 library files, use the following command:
+
+.. code::
+
+   cmake --build build -j
+
+This will invoke Make or your native platform build tool. To run tests, use:
+
+.. code::
+
+   ctest --test-dir build -j$(nproc)
+
+To install the newmat11 libraries into e.g. ``/opt/newmat11``, use:
+
+.. code::
+
+   cmake --install build --prefix /opt/newmat11
+
+Windows
+~~~~~~~
+
+TBD
 
 Using newmat11
 --------------
