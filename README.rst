@@ -42,17 +42,24 @@ C++11 or above and to reduce compiler warnings.
 .. _CMake: https://cmake.org/cmake/help/latest/
 
 
-Building + Installing
----------------------
+Installation
+------------
 
 To build, CMake 3.20 or above is required, as well as a C++98 compiler. By
 default, CMake will build newmat11 with the "default" C++ standard supported by
-the compiler, but this can be changed via different CMake settings.
+the compiler, but this can be changed via CMAKE_CXX_STANDARD_.
+
+.. _CMAKE_CXX_STANDARD:
+   https://cmake.org/cmake/help/latest/variable/CMAKE_CXX_STANDARD.html
+
+Since there are some differences between how CMake is traditionally invoked on
+POSIX-like systems vs. on Windows, we have two separate subsections with
+instructions on building, running tests, and installing newmat11 artifacts.
 
 POSIX
 ~~~~~
 
-For POSIX-like systems, use the following to configure a release build:
+To configure a release build, use the following command:
 
 .. code::
 
@@ -64,7 +71,9 @@ Then, to build the newmat11 library files, use the following command:
 
    cmake --build build -j
 
-This will invoke Make or your native platform build tool. To run tests, use:
+This will invoke Make or your native platform build tool. If examples and tests
+were enabled with ``-DNEWMAT11_BUILD_EXAMPLES=ON`` and/or
+``-DNEWMAT11_BUILD_TESTS=ON``, the examples and tests can be run with:
 
 .. code::
 
@@ -79,7 +88,45 @@ To install the newmat11 libraries into e.g. ``/opt/newmat11``, use:
 Windows
 ~~~~~~~
 
-TBD
+To configure a 64-bit build using the latest Visual Studio generator, run the
+following in a `Developer Command Prompt`_` CMD shell or `Windows Terminal`_ tab:
+
+.. _Developer Command Prompt:
+   https://learn.microsoft.com/en-us/visualstudio/ide/reference/
+   command-prompt-powershell?view=vs-2022
+
+.. _Windows Terminal: https://learn.microsoft.com/en-us/windows/terminal/
+
+.. code::
+
+   cmake -S . -B build -A x64
+
+To build the newmat11 Release configuration, use the following:
+
+.. code::
+
+   cmake --build build --config Release -j
+
+
+If examples and tests were enabled, run the Release examples and tests with:
+
+.. code::
+
+   ctest --test-dir build -C Release -j%NUMBER_OF_PROCESSORS%
+
+Finally, the install the newmat11 release libraries into a install prefix, use:
+
+.. code::
+
+   cmake --install build --prefix <install-prefix> --config Release
+
+Note that if you would also like to have the Debug configuration built, which
+by default will link against the dynamic debug `C runtime`__, repeat the above
+steps for building, testing, and installing, but with Release replaced with Debug.
+
+.. __: https://learn.microsoft.com/en-us/cpp/c-runtime-library/
+       crt-library-features?view=msvc-170
+
 
 Using newmat11
 --------------
