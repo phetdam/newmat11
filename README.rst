@@ -71,8 +71,8 @@ Then, to build the newmat11 library files, use the following command:
 
    cmake --build build -j
 
-This will invoke Make or your native platform build tool. If examples and tests
-were enabled passing to CMake ``-DNEWMAT11_BUILD_EXAMPLES=ON`` and/or
+This will invoke your native platform build tool, e.g. Make. If examples and
+tests were enabled by passing to CMake ``-DNEWMAT11_BUILD_EXAMPLES=ON`` and/or
 ``-DNEWMAT11_BUILD_TESTS=ON``, the examples and tests can be run with:
 
 .. code::
