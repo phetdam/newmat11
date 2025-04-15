@@ -72,7 +72,7 @@ Then, to build the newmat11 library files, use the following command:
    cmake --build build -j
 
 This will invoke Make or your native platform build tool. If examples and tests
-were enabled with ``-DNEWMAT11_BUILD_EXAMPLES=ON`` and/or
+were enabled passing to CMake ``-DNEWMAT11_BUILD_EXAMPLES=ON`` and/or
 ``-DNEWMAT11_BUILD_TESTS=ON``, the examples and tests can be run with:
 
 .. code::
@@ -89,7 +89,8 @@ Windows
 ~~~~~~~
 
 To configure a 64-bit build using the latest Visual Studio generator, run the
-following in a `Developer Command Prompt`_` CMD shell or `Windows Terminal`_ tab:
+following in a `Developer Command Prompt`_ shell or in `Windows Terminal`_ tab
+running the Developer Command Prompt profile:
 
 .. _Developer Command Prompt:
    https://learn.microsoft.com/en-us/visualstudio/ide/reference/
