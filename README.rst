@@ -3,7 +3,9 @@
 newmat11
 ========
 
-A C++ matrix library by Robert B. Davies.
+A C++ matrix library by `Robert B. Davies`__.
+
+.. __: https://www.robertnz.net/
 
 Supports different types of matrices including:
 
