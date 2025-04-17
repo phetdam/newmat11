@@ -49,13 +49,13 @@ Contents
 
 The source tree is organized as follows:
 
-``cmake``
+cmake
    CMake modules
 
-``example``
+example
    C++11 example programs
 
-``newmat11``
+newmat11
    ``newmat11.zip`` sources updated to compile under C++11
 
 
@@ -66,19 +66,45 @@ To build, CMake 3.20 or above is required, as well as a C++98 compiler. By
 default, CMake will build newmat11 with the "default" C++ standard supported by
 the compiler, but this can be changed via CMAKE_CXX_STANDARD_. There are also
 a few CMake options that can be passed using ``-D<var>=<value>`` to configure
-the build:
-
-+----------------------------+---------+--------------------------------------+
-| Option                     | Default | Description                          |
-+============================+=========+======================================+
-| ``NEWMAT11_USE_NAMESPACE`` | ``ON``  | Always enclose symbols in namespace. |
-|                            |         | This ensures that newmat11 symbols   |
-|                            |         | are accessed from the ``NEWMAT::``   |
-|                            |         | namespace.                           |
-+----------------------------+---------+--------------------------------------+
+the build which we display in the table below. However, for most applications,
+the chosen defaults should be enough.
 
 .. _CMAKE_CXX_STANDARD:
    https://cmake.org/cmake/help/latest/variable/CMAKE_CXX_STANDARD.html
+
++----------------------------------+---------+---------------------------------+
+| Option                           | Default | Description                     |
++==================================+=========+=================================+
+| ``NEWMAT11_USE_NAMESPACE``       | ``ON``  | Enclose symbols in the          |
+|                                  |         | ``NEWMAT::`` namespace. This    |
+|                                  |         | will define ``use_namespace``   |
+|                                  |         | as part of the newmat11 library |
+|                                  |         | compile interface.              |
++----------------------------------+---------+---------------------------------+
+| ``NEWMAT11_ENABLE_FREE_CHECK``   | ``OFF`` | Enables checks to ensure that   |
+|                                  |         | ``new`` and ``delete`` calls    |
+|                                  |         | are balanced. This is generally |
+|                                  |         | should not be enabled.          |
++----------------------------------+---------+---------------------------------+
+| ``NEWMAT11_ENABLE_C_SUBSCRIPTS`` | ``OFF`` | Enables C-style bracketed       |
+|                                  |         | subscripting. This enables      |
+|                                  |         | and vector element zero-indexed |
+|                                  |         | access via brackets instead of  |
+|                                  |         | the 1-indexed ``operator()``    |
+|                                  |         | Matlab-style indexing.          |
++----------------------------------+---------+---------------------------------+
+| ``NEWMAT11_BUILD_EXAMPLES``      | ``OFF`` | Build the newmat11 example      |
+|                                  |         | programs, both the original     |
+|                                  |         | examples__ in ``newmat11`` but  |
+|                                  |         | also programs in ``example``.   |
++----------------------------------+---------+---------------------------------+
+| ``NEWMAT11_BUILD_TESTS``         | ``OFF`` | Build the newmat11 tmt_ test    |
+|                                  |         | program and any other tests.    |
++----------------------------------+---------+---------------------------------+
+
+.. __: https://www.robertnz.net/nm11.htm#example
+
+.. _tmt: https://www.robertnz.net/nm11.htm#testing
 
 Since there are some differences between how CMake is traditionally invoked on
 POSIX-like systems vs. on Windows, we have two separate subsections with
