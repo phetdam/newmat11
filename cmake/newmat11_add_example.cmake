@@ -39,8 +39,8 @@ function(newmat11_add_example target)
     add_test(
         NAME ${target}
         COMMAND ${target}
-        # ensures that any data files in the same directory as the program can
-        # be read without any additional changes to working directory
+        # ensures that any data files in the same directory as the program
+        # source can be read without any changes to working directory
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     )
 endfunction()
