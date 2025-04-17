@@ -47,12 +47,17 @@ C++11 or above and to reduce compiler warnings.
 Contents
 --------
 
-.. code::
+To clearly indicate a separation between Davies' sources and additional CMake
+and example programs, the source tree is laid out as follows:
 
-   /
-     cmake/          CMake modules
-     example/        C++11 example programs
-     newmat11/       newmat11.zip sources tweaked to compile under C++11
+cmake
+   CMake modules
+
+example
+   C++11 example programs
+
+newmat11
+   ``newmat11.zip`` sources updated to compile under C++11
 
 
 Installation
@@ -65,11 +70,12 @@ a few CMake options that can be passed using ``-D<var>=<value>`` to configure
 the build:
 
 +----------------------------+---------+--------------------------------------+
-| Option                     | Default | Purpose                              |
+| Option                     | Default | Description                          |
 +============================+=========+======================================+
-| ``NEWMAT11_USE_NAMESPACE`` | ON      | Always enclose symbols in namespace. |
+| ``NEWMAT11_USE_NAMESPACE`` | ``ON``  | Always enclose symbols in namespace. |
 |                            |         | This ensures that newmat11 symbols   |
-|                            |         | are accessed from ``NEWMAT::``.      |
+|                            |         | are accessed from the ``NEWMAT::``   |
+|                            |         | namespace.                           |
 +----------------------------+---------+--------------------------------------+
 
 .. _CMAKE_CXX_STANDARD:
