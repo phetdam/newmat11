@@ -88,7 +88,7 @@ the chosen defaults should be enough.
 |                                  |         | are balanced. This is generally |
 |                                  |         | should not be enabled.          |
 +----------------------------------+---------+---------------------------------+
-| ``NEWMAT11_ENABLE_C_SUBSCRIPTS`` | ``OFF`` | Enables C-style bracketed       |
+| ``NEWMAT11_ENABLE_C_SUBSCRIPTS`` | ``ON``  | Enables C-style bracketed       |
 |                                  |         | subscripting. This enables      |
 |                                  |         | and vector element zero-indexed |
 |                                  |         | access via brackets instead of  |
