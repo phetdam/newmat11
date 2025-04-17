@@ -65,9 +65,11 @@ Installation
 To build, CMake 3.20 or above is required, as well as a C++98 compiler. By
 default, CMake will build newmat11 with the "default" C++ standard supported by
 the compiler, but this can be changed via CMAKE_CXX_STANDARD_. There are also
-a few CMake options that can be passed using ``-D<var>=<value>`` to configure
+a few CMake options that can be passed using ``-D<var>=<value>`` to customize__
 the build which we display in the table below. However, for most applications,
 the chosen defaults should be enough.
+
+.. __: https://www.robertnz.net/nm11.htm#custom
 
 .. _CMAKE_CXX_STANDARD:
    https://cmake.org/cmake/help/latest/variable/CMAKE_CXX_STANDARD.html
@@ -98,13 +100,14 @@ the chosen defaults should be enough.
 |                                  |         | examples__ in ``newmat11`` but  |
 |                                  |         | also programs in ``example``.   |
 +----------------------------------+---------+---------------------------------+
-| ``NEWMAT11_BUILD_TESTS``         | ``OFF`` | Build the newmat11 tmt_ test    |
-|                                  |         | program and any other tests.    |
+| ``NEWMAT11_BUILD_TESTS``         | ``OFF`` | Build the newmat11 ``tmt``      |
+|                                  |         | `test program`__ and any other  |
+|                                  |         | tests.                          |
 +----------------------------------+---------+---------------------------------+
 
 .. __: https://www.robertnz.net/nm11.htm#example
 
-.. _tmt: https://www.robertnz.net/nm11.htm#testing
+.. __: https://www.robertnz.net/nm11.htm#testing
 
 Since there are some differences between how CMake is traditionally invoked on
 POSIX-like systems vs. on Windows, we have two separate subsections with
