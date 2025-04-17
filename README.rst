@@ -44,12 +44,33 @@ C++11 or above and to reduce compiler warnings.
 .. _CMake: https://cmake.org/cmake/help/latest/
 
 
+Contents
+--------
+
+.. code::
+
+   /
+     cmake/          CMake modules
+     example/        C++11 example programs
+     newmat11/       newmat11.zip sources tweaked to compile under C++11
+
+
 Installation
 ------------
 
 To build, CMake 3.20 or above is required, as well as a C++98 compiler. By
 default, CMake will build newmat11 with the "default" C++ standard supported by
-the compiler, but this can be changed via CMAKE_CXX_STANDARD_.
+the compiler, but this can be changed via CMAKE_CXX_STANDARD_. There are also
+a few CMake options that can be passed using ``-D<var>=<value>`` to configure
+the build:
+
++----------------------------+---------+--------------------------------------+
+| Option                     | Default | Purpose                              |
++============================+=========+======================================+
+| ``NEWMAT11_USE_NAMESPACE`` | ON      | Always enclose symbols in namespace. |
+|                            |         | This ensures that newmat11 symbols   |
+|                            |         | are accessed from ``NEWMAT::``.      |
++----------------------------+---------+--------------------------------------+
 
 .. _CMAKE_CXX_STANDARD:
    https://cmake.org/cmake/help/latest/variable/CMAKE_CXX_STANDARD.html
