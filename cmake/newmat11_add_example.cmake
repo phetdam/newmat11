@@ -13,7 +13,7 @@ cmake_minimum_required(VERSION 3.15)
 # Helper function for registering a newmat example program.
 #
 # This builds a single ${target}.cpp file into an example program, links
-# against the newmat library target, and registers a CTest test However, if
+# against the newmat library target, and registers a CTest test. However, if
 # NEWMAT11_BUILD_EXAMPLES is FALSE, a skip message is printed instead.
 #
 # The working directory of each test is the top-level source directory.
