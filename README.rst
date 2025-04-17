@@ -29,11 +29,11 @@ Provides useful matrix operations such as:
 
 See the full features in the `online summary`__ and the `online documentation`__,
 of which a copy has been provided in the source tree for offline viewing (the
-HTML file ``/newmat11/nm11.htm``).
+HTML file ``newmat11/nm11.htm``).
 
 The CMake_ build and packaging support was contributed by Derek Huang to
 facilitate a standard build mechanism across POSIX-like and Windows platforms.
-All other files in the ``/newmat11`` directory are from the `newmat11.zip`_
+All other files in the ``newmat11`` directory are from the `newmat11.zip`_
 downloaded on April 13, 2025. Originally, the library only targeted C++98, so
 some modifications have been made by Derek Huang to enable compilation under
 C++11 or above and to reduce compiler warnings.
@@ -47,16 +47,15 @@ C++11 or above and to reduce compiler warnings.
 Contents
 --------
 
-To clearly indicate a separation between Davies' sources and additional CMake
-and example programs, the source tree is laid out as follows:
+The source tree is organized as follows:
 
-cmake
+``cmake``
    CMake modules
 
-example
+``example``
    C++11 example programs
 
-newmat11
+``newmat11``
    ``newmat11.zip`` sources updated to compile under C++11
 
 
