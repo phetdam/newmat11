@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION ${CMAKE_MINIMUM_REQUIRED_VERSION})
 # newmat11/CMakeLists.txt
 #
 # Author: Derek Huang
-# Copyright: MIT License
+# License: MIT License
 #
 
 # newmat: the newmat C++ matrix library
