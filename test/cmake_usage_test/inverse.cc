@@ -4,7 +4,11 @@
  * @brief C++ newmat11 matrix inverse example
  * @copyright MIT License
  *
- * @file This is a C++11 version of nm_ex1.cpp that works with CMake installs.
+ * @file
+ *
+ * This is a C++11 version of nm_ex1.cpp that works with CMake installs.
+ *
+ * newmat11 must have been built with the namespace feature enabled.
  */
 
 #include <cstdlib>

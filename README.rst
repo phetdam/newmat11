@@ -197,7 +197,14 @@ After having installed newmat11 one can use it from CMake with `find_package`_:
 
    find_package(newmat11 REQUIRED)
 
-Suppose we have the following C++11 program demonstrating matrix inversion:
+If specific newmat11 build customization features are required they can be
+specified with ``COMPONENTS``:
+
+.. code:: cmake
+
+   find_package(newmat11 REQUIRED COMPONENTS namespace c_subscripts)
+
+Now, suppose we have the following C++11 program demonstrating matrix inversion:
 
 .. code:: cpp
 
@@ -207,7 +214,11 @@ Suppose we have the following C++11 program demonstrating matrix inversion:
     * @brief C++ newmat11 matrix inverse example
     * @copyright MIT License
     *
-    * @file This is a C++11 version of nm_ex1.cpp that works with CMake installs.
+    * @file
+    *
+    * This is a C++11 version of nm_ex1.cpp that works with CMake installs.
+    *
+    * newmat11 must have been built with the namespace feature enabled.
     */
 
    #include <cstdlib>
