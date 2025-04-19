@@ -120,6 +120,8 @@ set(NEWMAT11_CMAKE_PREFIX lib/cmake/${PROJECT_NAME})
 
 # configure newmat libraries, example programs, and tmt test program
 add_subdirectory(newmat11)
+# configure tests
+add_subdirectory(test)
 
 # configure CMake config + version config scripts
 configure_package_config_file(
