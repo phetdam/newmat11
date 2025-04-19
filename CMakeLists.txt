@@ -30,6 +30,7 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 include(CMakePackageConfigHelpers)
 include(CTest)
 include(newmat11_add_example)
+include(newmat11_collect_build_options)
 
 # ensure BUILD_TESTING and NEWMAT11_BUILD_TESTS are aligned
 set(BUILD_TESTING ${NEWMAT11_BUILD_TESTS})
@@ -53,7 +54,7 @@ else()
     message(STATUS "Build config: ${CMAKE_BUILD_TYPE}")
 endif()
 
-# info on options
+# info on build features
 if(NEWMAT11_USE_NAMESPACE)
     message(STATUS "Enable namespacing: Yes")
 else()
@@ -69,6 +70,21 @@ if(NEWMAT11_ENABLE_C_SUBSCRIPTS)
 else()
     message(STATUS "Enable C-style indexing: No")
 endif()
+
+# collect enabled build options into feature list
+newmat11_collect_build_options(
+    NEWMAT11_FEATURES
+    OPTIONS
+        NEWMAT11_USE_NAMESPACE
+        NEWMAT11_ENABLE_FREE_CHECK
+        NEWMAT11_ENABLE_C_SUBSCRIPTS
+)
+# print enabled features
+list(JOIN NEWMAT11_FEATURES " " features_str)
+message(STATUS "Build features: ${features_str}")
+unset(features_str)
+
+# info on build config
 if(NEWMAT11_BUILD_EXAMPLES)
     message(STATUS "Build examples: Yes")
 else()
