@@ -52,11 +52,11 @@ The source tree is organized as follows:
 cmake
    CMake modules
 
-example
-   C++11 example programs
-
 newmat11
    ``newmat11.zip`` sources updated to compile under C++11
+
+test
+   newmat11 test programs, CMake projects, etc.
 
 
 Installation
