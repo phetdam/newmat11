@@ -73,14 +73,14 @@ endif()
 
 # collect enabled build options into feature list
 newmat11_collect_build_options(
-    NEWMAT11_FEATURES
+    NEWMAT11_ENABLED_FEATURES
     OPTIONS
         NEWMAT11_USE_NAMESPACE
         NEWMAT11_ENABLE_FREE_CHECK
         NEWMAT11_ENABLE_C_SUBSCRIPTS
 )
 # print enabled features
-list(JOIN NEWMAT11_FEATURES " " features_str)
+list(JOIN NEWMAT11_ENABLED_FEATURES " " features_str)
 message(STATUS "Build features: ${features_str}")
 unset(features_str)
 
