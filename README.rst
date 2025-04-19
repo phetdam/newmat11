@@ -225,7 +225,7 @@ Suppose we have the following C++11 program demonstrating matrix inversion:
      int precision_;
    };
 
-   auto& operator<<(std::ostream& out, const float_format& ff)
+   std::ostream& operator<<(std::ostream& out, const float_format& ff)
    {
      return out << std::setw(ff.width_) << std::setprecision(ff.precision_);
    }
